@@ -1,39 +1,38 @@
-//
-// Created by Andrei Pop on 02.05.2025.
-//
-
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 namespace Domain {
 
     class Customer {
 
     struct Address {
-        std::string country;
-        std::string city;
-        std::string street;
-        std::string number;
+        string country;
+        string city;
+        string street;
+        string number;
     };
     private:
 
-        std::string surname;
-        std::string first_name;
-        std::string email;
+        string surname;
+        string first_name;
+        string email;
         Address address;
         bool GDPR;
 
     public:
 
-        Customer(std::string& surname, std::string& first_name, std::string& email, Address& address, bool GDPR) :
+        Customer(string& surname, string& first_name, string& email, Address& address, bool GDPR) :
         surname(surname), first_name(first_name), email(email), address(address), GDPR(GDPR) {}
-        std::string getSurname();
-        std::string getFirstName();
-        std::string getEmail();
+        string getSurname();
+        string getFirstName();
+        string getEmail();
         Address getAddress();
         bool getGDPR();
 
     };
 }
-#endif //CUSTOMER_H
+#endif 
