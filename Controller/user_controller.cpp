@@ -3,6 +3,8 @@
 //
 #include "user_controller.h"
 
+using namespace std;
+
 namespace Controller {
 
 }
