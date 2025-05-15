@@ -2,37 +2,51 @@
 #define CUSTOMER_H
 #include <string>
 #include <iostream>
+#pragma once
 
 using namespace std;
 
-namespace Domain {
-
-    class Customer {
+class Customer {
+private:
+    int id;
+    string firstName;
+    string lastName;
+    string email;
 
     struct Address {
         string country;
         string city;
         string street;
-        string number;
+        int streetNumber;
     };
-    private:
+    Address address;
 
-        string surname;
-        string first_name;
-        string email;
-        Address address;
-        bool GDPR;
+    string notes;
 
-    public:
+    bool gdprDeleted;
 
-        Customer(string& surname, string& first_name, string& email, Address& address, bool GDPR) :
-        surname(surname), first_name(first_name), email(email), address(address), GDPR(GDPR) {}
-        string getSurname();
-        string getFirstName();
-        string getEmail();
-        Address getAddress();
-        bool getGDPR();
+public:
+    Customer(int id, const string& firstName, const string& lastName, const string& email,
+                const Address& address, const string& notes = "", bool gdprDeleted = false);
 
-    };
-}
+    //Get
+    int getId() const;
+    string getFirstName() const;
+    string getLastName() const;
+    string getEmail() const;
+    Address getAddress() const;
+    string getNotes() const;
+    bool isGdprDeleted() const;
+
+    //Set
+    void setFirstName(const string& firstName);
+    void setLastName(const string& lastName);
+    void setEmail(const string& email);
+    void setAddress(const Address& address);
+    void setNotes(const string& notes);
+    void setGdprDeleted(bool gdprDeleted);
+
+    void anonymize();
+};
+
 #endif 
