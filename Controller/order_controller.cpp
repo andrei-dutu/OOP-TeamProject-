@@ -5,4 +5,8 @@
 
 namespace Controller {
 
+    void OrderController::addOrder(const Domain::Order& order) {
+        order_repo.addOrder(order);
+    }
+
 }
