@@ -20,15 +20,17 @@ namespace Repository {
         Domain::Order searchOrder(int id) const;
         std::vector<Domain::Order> findOrdersByEmployee(const std::string& email) const;
         std::vector<Domain::Order> findOrdersByCustomer(std::string email);
-        std::vector<Domain::Order> findOrdersByStatus(std::string status);
-        std::vector<Domain::Order> findOrdersByYear(std::string email);
-        void modifyOrderStatus(std::string new_status);
-        void modifyOrderNumber(int new_number);
-        void modifyOrderProduct(Domain::Product new_product);
-        void modifyOrderQuantity(int new_quantity);
-        void giveOrderToAnotherEmployee(int order_id, std::string email);
+        std::vector<Domain::Order> findOrdersByStatus(const std::string& status);
+        std::vector<Domain::Order> findOrdersByYearAndMonth(int year, int month);
+        std::vector<Domain::Order> findOrdersByYear(int year);
+        std::vector<Domain::Order> findOrdersByDate(Domain::Date date);
+        void modifyOrderStatus(int number, const std::string& new_status);
+        void modifyOrderNumber(int number, int new_number);
+        void modifyOrderProduct(int number, Domain::Product new_product);
+        void modifyOrderQuantity(int number, int new_quantity);
+        void giveOrderToAnotherEmployee(int number, std::string email);
         int getTotalAmountByYear(int year);
-        int getTotalAmountByMonth(int Month);
+        int getTotalAmountByMonth(int year, int Month);
 
     };
 }
