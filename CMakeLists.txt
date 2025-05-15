@@ -12,5 +12,6 @@ add_executable(App main.cpp Controller/customer_controller.cpp Controller/custom
         Repository/user_repository.h Repository/customer_repository.cpp Repository/customer_repository.h
         Repository/employee_repository.cpp Repository/employee_repository.h Repository/product_repository.cpp
         Repository/product_repository.h Repository/order_repository.cpp Repository/order_repository.h UI/ui.cpp
-        UI/ui.h
+        UI/ui.h Domain Repository UI
         )
+add_executable(Test)
