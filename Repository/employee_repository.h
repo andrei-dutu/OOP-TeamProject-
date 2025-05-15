@@ -2,11 +2,11 @@
 #define EMPLOYEE_REPOSITORY_H
 
 #include <vector>
-#include <string>
 #include <optional>
+#include <string>
 #include "../Domain/employee.h"
 
-namespace Repository {
+namespace repository {
 
     class EmployeeRepository {
     private:
@@ -29,5 +29,3 @@ namespace Repository {
 }
 
 #endif
-
-
