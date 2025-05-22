@@ -8,9 +8,8 @@ namespace Controller {
 
     using namespace Domain;
 
-    EmployeeController::EmployeeController(Repository::EmployeeRepository& employee_repo,
-                                           Repository::ClientRepository& client_repo)
-        : employee_repo(employee_repo), client_repo(client_repo) {}
+    EmployeeController::EmployeeController(repository::EmployeeRepository& employee_repo)
+        : employee_repo(employee_repo) {}
 
     int calculate_age(const Date& birthdate) {
         time_t now_time = time(nullptr);
@@ -61,68 +60,6 @@ namespace Controller {
         Employee emp(surname, first_name, email, position, birthdate, salary);
         employee_repo.add(emp);
         return true;
-    }
-
-    bool EmployeeController::create_client(size_t id,
-                                           const std::string& name,
-                                           const std::string& vorname,
-                                           const std::string& email,
-                                           const std::string& handy,
-                                           const std::string& adresse,
-                                           const std::string& bemerkungen) {
-        if (name.empty() || vorname.empty()) {
-            throw std::runtime_error("Name and Vorname are required.");
-        }
-
-        Customer::Address address = {"", "", adresse, 0}; // temporar, în funcție de structura exactă
-        Customer client(static_cast<int>(id), vorname, name, email, address, bemerkungen, false);
-        return client_repo.add(client);
-    }
-
-    bool EmployeeController::update_client(size_t client_id,
-                                           const std::string& name,
-                                           const std::string& vorname,
-                                           const std::string& email,
-                                           const std::string& handy,
-                                           const std::string& adresse,
-                                           const std::string& bemerkungen) {
-        Customer* client = client_repo.get_by_id(client_id);
-        if (client == nullptr) {
-            throw std::runtime_error("Client not found.");
-        }
-
-        client->setFirstName(vorname);
-        client->setLastName(name);
-        client->setEmail(email);
-
-        Customer::Address address = {"", "", adresse, 0};
-        client->setAddress(address);
-        client->setNotes(bemerkungen);
-
-        return client_repo.update(*client);
-    }
-
-    bool EmployeeController::delete_client(size_t client_id) {
-        const Customer* client = client_repo.get_by_id(client_id);
-        if (client == nullptr) {
-            throw std::runtime_error("Client not found.");
-        }
-
-        if (client_repo.has_orders(client_id)) {
-            throw std::runtime_error("Client cannot be deleted – existing orders.");
-        }
-
-        return client_repo.remove(client_id);
-    }
-
-    bool EmployeeController::anonymize_client_gdpr(size_t client_id) {
-        Customer* client = client_repo.get_by_id(client_id);
-        if (client == nullptr) {
-            throw std::runtime_error("Client not found.");
-        }
-
-        client->anonymize();
-        return client_repo.update(*client);
     }
 
 }
