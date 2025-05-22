@@ -47,6 +47,7 @@ namespace Repository {
 
         if (!aux.empty())
             throw std::runtime_error("No product with this status");
+        return aux;
     }
 
     std::vector<Domain::Order> OrderRepository::findOrdersByYear(int year) {
