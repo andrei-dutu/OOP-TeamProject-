@@ -53,6 +53,12 @@ void Customer::setGdprDeleted(bool gdprDeleted) {
 }
 
 
-void Customer::anonymize() {
-
+void Customer::anonymize()
+{
+    lastName = "Kunde-" + to_string(id);
+    firstName = "Anonymus";
+    email = "";
+    address = {"", "", "", 0};
+    notes = "";
+    gdprDeleted = true;
 }
