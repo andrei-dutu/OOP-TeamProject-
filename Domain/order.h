@@ -33,7 +33,7 @@ namespace Domain {
 
         int getOrderNumber() const;
         Date getDate() const;
-        std::string getStatus();
+        std::string getStatus() const;
         Product getProduct();
         int getQuantity() const;
         std::string getCustomerEmail();
