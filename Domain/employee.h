@@ -1,53 +1,44 @@
-//
-// Created by Andrei Pop on 02.05.2025.
-//
-
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
-
 #include <string>
+#include <iostream>
+#pragma once
 
-namespace Domain {
+using namespace std;
 
-    struct Date {
-        int day, month, year;
-    };
+class Employee {
+private:
+    int id;
+    string firstName;
+    string lastName;
+    string email;
+    string password;
+    string position;
+    string birthDate;  // format dd.mm.yyyy
+    double salary;
 
-    class Employee {
+public:
+    Employee(int id, const string& firstName, const string& lastName, const string& email, const string& password,
+             const string& position, const string& birthDate, double salary);
 
-    private:
-        std::string surname;
-        std::string first_name;
-        std::string email;
-        std::string position;
-        Date date;
-        int salary;
-        bool active = true;
-        bool is_admin = false;
-        std::string password = "default123";
-        std::string remarks;
+    // Getters
+    int getId() const;
+    string getFirstName() const;
+    string getLastName() const;
+    string getEmail() const;
+    string getPassword() const;
+    string getPosition() const;
+    string getBirthDate() const;
+    double getSalary() const;
 
-    public:
-        Employee(const std::string& surname, const std::string& first_name, const std::string& email,
-                 const std::string& position, Date date, int salary);
-
-        std::string getSurname() const;
-        std::string getFirstName() const;
-        std::string getEmail() const;
-        std::string getPosition() const;
-        Date getDate() const;
-        int getSalary() const;
-        std::string getPassword() const;
-        bool isActive() const;
-        bool isAdmin() const;
-        std::string getRemarks() const;
-
-        void setActive(bool status);
-        void setAdmin(bool status);
-        void setPassword(const std::string& new_password);
-        void setRemarks(const std::string& new_remarks);
-    };
-
-}
+    // Setters
+    void setFirstName(const string& firstName);
+    void setLastName(const string& lastName);
+    void setEmail(const string& email);
+    void setPassword(const string& password);
+    void setPosition(const string& position);
+    void setBirthDate(const string& birthDate);
+    void setSalary(double salary);
+};
 
 #endif

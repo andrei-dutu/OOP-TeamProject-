@@ -1,65 +1,57 @@
-#include "Employee.h"
+#include "employee.h"
 
-namespace Domain {
+using namespace std;
 
-    Employee::Employee(const std::string& surname, const std::string& first_name, const std::string& email,
-                       const std::string& position, Date date, int salary)
-        : surname(surname), first_name(first_name), email(email), position(position), date(date), salary(salary) {}
+Employee::Employee(int id, const string& firstName, const string& lastName, const string& email, const string& password,
+                   const string& position, const string& birthDate, double salary)
+    : id(id), firstName(firstName), lastName(lastName), email(email), password(password),
+      position(position), birthDate(birthDate), salary(salary) {}
 
-    std::string Employee::getSurname() const {
-        return surname;
-    }
+// Getters
+int Employee::getId() const {
+    return id;
+}
+string Employee::getFirstName() const {
+    return firstName;
+}
+string Employee::getLastName() const {
+    return lastName;
+}
+string Employee::getEmail() const {
+    return email;
+}
+string Employee::getPassword() const {
+    return password;
+}
+string Employee::getPosition() const {
+    return position;
+}
+string Employee::getBirthDate() const {
+    return birthDate;
+}
+double Employee::getSalary() const {
+    return salary;
+}
 
-    std::string Employee::getFirstName() const {
-        return first_name;
-    }
-
-    std::string Employee::getEmail() const {
-        return email;
-    }
-
-    std::string Employee::getPosition() const {
-        return position;
-    }
-
-    Date Employee::getDate() const {
-        return date;
-    }
-
-    int Employee::getSalary() const {
-        return salary;
-    }
-
-    std::string Employee::getPassword() const {
-        return password;
-    }
-
-    bool Employee::isActive() const {
-        return active;
-    }
-
-    bool Employee::isAdmin() const {
-        return is_admin;
-    }
-
-    std::string Employee::getRemarks() const {
-        return remarks;
-    }
-
-    void Employee::setActive(bool status) {
-        active = status;
-    }
-
-    void Employee::setAdmin(bool status) {
-        is_admin = status;
-    }
-
-    void Employee::setPassword(const std::string& new_password) {
-        password = new_password;
-    }
-
-    void Employee::setRemarks(const std::string& new_remarks) {
-        remarks = new_remarks;
-    }
-
+// Setters
+void Employee::setFirstName(const string& firstName) {
+    this->firstName = firstName;
+}
+void Employee::setLastName(const string& lastName) {
+    this->lastName = lastName;
+}
+void Employee::setEmail(const string& email) {
+    this->email = email;
+}
+void Employee::setPassword(const string& password) {
+    this->password = password;
+}
+void Employee::setPosition(const string& position) {
+    this->position = position;
+}
+void Employee::setBirthDate(const string& birthDate) {
+    this->birthDate = birthDate;
+}
+void Employee::setSalary(double salary) {
+    this->salary = salary;
 }
