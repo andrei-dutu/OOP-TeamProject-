@@ -1,24 +1,28 @@
-#ifndef CUSTOMER_CONTROLLER_H
-#define CUSTOMER_CONTROLLER_H
+#include "customer_controller.h"
 
-#include "../Repository/customer_repository.h"
+CustomerController::CustomerController(CustomerRepository& repo) : repository(repo) {}
 
-class CustomerController {
+vector<Customer>& CustomerController::getAllCustomers() {
+    return repository.getCustomers();
+}
 
-private:
-    CustomerRepository& repository;
+void CustomerController::addCustomer(const Customer& customer) {
+    repository.addCustomer(customer);
+}
 
-public:
-    CustomerController(CustomerRepository& repo);
+bool CustomerController::updateCustomer(int id, const Customer& updatedCustomer) {
+    return repository.updateCustomer(id, updatedCustomer);
+}
 
-    vector<Customer>& getAllCustomers();
-    void addCustomer(const Customer& customer);
-    bool updateCustomer(int id, const Customer& updatedCustomer);
-    bool deleteCustomer(int id);
-    Customer* findByEmail(const string& email);
-    int getCustomerCount() const;
-    int getActiveCustomerCount() const;
-    vector<Customer>& findByProduct(string& productName);
-};
+bool CustomerController::deleteCustomer(int id) {
+    return repository.deleteCustomer(id);
+}
 
-#endif
+Customer* CustomerController::findByEmail(const string& email) {
+    return repository.findByEmail(email);
+}
+
+int CustomerController::getCustomerCount() const {
+    return repository.getCustomerCount();
+}
+
