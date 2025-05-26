@@ -1,4 +1,5 @@
 #include "employee_controller.h"
+namespace Controller {
 
 EmployeeController::EmployeeController(EmployeeRepository& repo) : repository(repo) {}
 
@@ -33,4 +34,5 @@ Employee* EmployeeController::findByEmail(const string& email) {
         throw runtime_error("Employee with email '" + email + "' not found.");
     }
     return found;
+}
 }

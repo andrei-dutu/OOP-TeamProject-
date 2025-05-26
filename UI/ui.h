@@ -11,9 +11,11 @@ namespace UI {
     class UI {
     private:
         Controller::EmployeeController& employee_controller;
-        Controller::
+        Controller::CustomerController& customer_controller;
     public:
-
+        UI(Controller::EmployeeController ec, Controller::CustomerController cs) : employee_controller(ec),
+        customer_controller(cs){}
+        void run();
     };
 }
 

@@ -10,10 +10,13 @@
 
 namespace Domain {
 
+    struct Date {
+        int day, month, year;
+        Date(const int day, const int month, const int year) : day(day), month(month), year(year) {};
+    };
+
     class Order {
-
     private:
-
         int order_number;
         Date date;
         std::string status;

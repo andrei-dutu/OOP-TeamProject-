@@ -9,7 +9,7 @@ namespace Domain {
         return order_number;
     }
 
-    Date Order::getDate() const {
+     Date Order::getDate() const {
         return date;
     }
 

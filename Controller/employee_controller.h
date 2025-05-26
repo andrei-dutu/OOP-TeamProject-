@@ -2,8 +2,8 @@
 #define EMPLOYEE_CONTROLLER_H
 
 #include "../Repository/employee_repository.h"
-
-class EmployeeController {
+namespace Controller{
+    class EmployeeController {
 
 private:
     EmployeeRepository& repository;
@@ -17,5 +17,7 @@ public:
     bool deleteEmployee(int id);
     Employee* findByEmail(const string& email);
 };
+}
+
 
 #endif

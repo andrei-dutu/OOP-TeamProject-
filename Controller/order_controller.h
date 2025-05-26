@@ -5,6 +5,7 @@
 #ifndef ORDER_CONTROLLER_H
 #define ORDER_CONTROLLER_H
 #include "../Repository/order_repository.h"
+#include "../Domain/order.h"
 
 namespace Controller {
 
