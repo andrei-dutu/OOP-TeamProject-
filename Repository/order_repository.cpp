@@ -28,7 +28,7 @@ namespace Repository {
         throw std::exception();
     }
 
-    std::vector<Domain::Order> OrderRepository::findOrdersByCustomer(std::string email) {
+    std::vector<Domain::Order> OrderRepository::findOrdersByCustomer(const std::string& email) const {
         std::vector<Domain::Order> aux;
         for (Domain::Order order : order_repo)
             if (order.getCustomerEmail() == email)
@@ -38,7 +38,7 @@ namespace Repository {
         throw std::exception();
     }
 
-    std::vector<Domain::Order> OrderRepository::findOrdersByStatus(const std::string& status) {
+    std::vector<Domain::Order> OrderRepository::findOrdersByStatus(const std::string& status) const {
 
         std::vector<Domain::Order> aux;
         for (Domain::Order order : order_repo)
@@ -46,11 +46,13 @@ namespace Repository {
                 aux.emplace_back(order);
 
         if (!aux.empty())
-            throw std::runtime_error("No product with this status");
-        return aux;
+            return aux;
+
+        throw std::runtime_error("No product with this status");
+
     }
 
-    std::vector<Domain::Order> OrderRepository::findOrdersByYear(int year) {
+    std::vector<Domain::Order> OrderRepository::findOrdersByYear(int year) const {
         std::vector<Domain::Order> aux;
         for (const Domain::Order& order : order_repo)
             if (order.getDate().year == year)
@@ -61,7 +63,7 @@ namespace Repository {
         throw std::runtime_error("No product int this year");
     }
 
-    std::vector<Domain::Order> OrderRepository::findOrdersByYearAndMonth(int year, int month) {
+    std::vector<Domain::Order> OrderRepository::findOrdersByYearAndMonth(int year, int month) const {
 
         std::vector<Domain::Order> aux;
         for (const Domain::Order& order : order_repo)
@@ -73,7 +75,7 @@ namespace Repository {
         throw std::runtime_error("No product int this month");
     }
 
-    std::vector<Domain::Order> OrderRepository::findOrdersByDate(Domain::Date date) {
+    std::vector<Domain::Order> OrderRepository::findOrdersByDate(const Domain::Date date) const {
 
         std::vector<Domain::Order> aux;
         for (const Domain::Order& order : order_repo)
@@ -86,58 +88,59 @@ namespace Repository {
         throw std::runtime_error("No product with this date");
     }
 
-    void OrderRepository::modifyOrderNumber(int new_number, int number) {
+    void OrderRepository::modifyOrderNumber(const int number, const int new_number) {
 
         for (Domain::Order& order : order_repo)
             if (order.getOrderNumber() == number) {
                 order.setOrderNumber(new_number);
-                break;
+                return;
             }
         throw std::runtime_error("No product with this id");
     }
 
-    void OrderRepository::modifyOrderQuantity(int number, int new_quantity) {
+    void OrderRepository::modifyOrderQuantity(const int number, const int new_quantity) {
 
         for (Domain::Order& order : order_repo)
             if (order.getOrderNumber() == number) {
                 order.setQuantity(new_quantity);
-                break;
+                return;
             }
         throw std::runtime_error("No product with this id");
     }
 
-    void OrderRepository::modifyOrderStatus(int number, const std::string& new_status) {
+    void OrderRepository::modifyOrderStatus(const int number, const std::string& new_status) {
 
         for (Domain::Order& order : order_repo)
             if (order.getOrderNumber() == number) {
                 order.setStatus(new_status);
-                break;
+                return;
             }
         throw std::runtime_error("No product with this number");
+
     }
 
-    void OrderRepository::modifyOrderProduct(int number, Domain::Product new_product) {
+    void OrderRepository::modifyOrderProduct(const int number, const Domain::Product& new_product) {
 
         for (Domain::Order& order : order_repo)
             if (order.getOrderNumber() == number) {
                 order.setProduct(new_product);
-                break;
+                return;
             }
 
         throw std::runtime_error("No product with this number");
     }
 
-    void OrderRepository::giveOrderToAnotherEmployee(int number, std::string email) {
+    void OrderRepository::giveOrderToAnotherEmployee(const int number, const std::string& email) {
         for (Domain::Order& order : order_repo)
             if (order.getOrderNumber() == number) {
                 order.setEmployeeEmail(email);
-                break;
+                return;
             }
         throw std::runtime_error("No product with this number");
     }
 
 
-    int OrderRepository::getTotalAmountByYear(int year) {
+    int OrderRepository::getTotalAmountByYear(const int year) {
         int total = 0;
         for (Domain::Order& order : order_repo)
             if (order.getDate().year == year) {
@@ -148,7 +151,7 @@ namespace Repository {
         return total;
     }
 
-    int OrderRepository::getTotalAmountByMonth(int year, int month) {
+    int OrderRepository::getTotalAmountByMonth(const int year, const int month) {
         int total = 0;
         for (Domain::Order& order : order_repo)
             if (order.getDate().year == year && order.getDate().month == month) {
