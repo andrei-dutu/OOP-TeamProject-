@@ -13,9 +13,10 @@ namespace Repository {
 
     private:
 
-        std::vector<Domain::Order> order_repo;
+        std::vector<Domain::Order> order_storage;
 
     public:
+        std::vector<Domain::Order> returnStorage();
         void addOrder(const Domain::Order& order);
         Domain::Order searchOrder(int id) const;
         std::vector<Domain::Order> findOrdersByEmployee(const std::string& email) const;
