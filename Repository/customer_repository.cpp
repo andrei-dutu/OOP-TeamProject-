@@ -3,13 +3,13 @@
 using namespace std;
 
 CustomerRepository::CustomerRepository() : customers {
-            {1, "Ion", "Popescu", "ion.popescu@test.ro", {"Romania", "Bucuresti", "Strada Libertatii", 10}, "", false},
-            {2, "Maria", "Smith", "maria.smith@test.com", {"USA", "New York", "5th Avenue", 123}, "", false},
-            {3, "Andrei", "Georgescu", "andrei.georgescu@test.ro", {"Romania", "Cluj-Napoca", "Strada Eroilor", 5}, "", false},
-            {4, "Elena", "Garcia", "elena.garcia@test.es", {"Spain", "Madrid", "Calle Gran Via", 45}, "", false},
-            {5, "Vasile", "Marinescu", "vasile.marinescu@test.ro", {"Romania", "Brasov", "Strada Republicii", 15}, "", false},
-            {6, "Ioana", "Müller", "ioana.mueller@test.de", {"Germany", "Berlin", "Alexanderplatz", 7}, "", false},
-            {7, "George", "Stan", "george.stan@test.ro", {"Romania", "Craiova", "Strada Unirii", 7}, "", false},
+        {1, "Ion", "Popescu", "ion.popescu@test.ro", "pass123", {"Romania", "Bucuresti", "Strada Libertatii", 10}, "", false},
+        {2, "Maria", "Smith", "maria.smith@test.com", "maria456", {"USA", "New York", "5th Avenue", 123}, "", false},
+        {3, "Andrei", "Georgescu", "andrei.georgescu@test.ro", "andrei789", {"Romania", "Cluj-Napoca", "Strada Eroilor", 5}, "", false},
+        {4, "Elena", "Garcia", "elena.garcia@test.es", "elena000", {"Spain", "Madrid", "Calle Gran Via", 45}, "", false},
+        {5, "Vasile", "Marinescu", "vasile.marinescu@test.ro", "vasile999", {"Romania", "Brasov", "Strada Republicii", 15}, "", false},
+        {6, "Ioana", "Müller", "ioana.mueller@test.de", "ioana321", {"Germany", "Berlin", "Alexanderplatz", 7}, "", false},
+        {7, "George", "Stan", "george.stan@test.ro", "george654", {"Romania", "Craiova", "Strada Unirii", 7}, "", false},
     } {}
 
 vector<Customer>& CustomerRepository::getCustomers() {

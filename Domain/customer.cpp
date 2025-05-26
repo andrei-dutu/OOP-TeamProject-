@@ -2,9 +2,9 @@
 
 using namespace std;
 
-Customer::Customer(int id, const string& firstName, const string& lastName, const string& email,
+Customer::Customer(int id, const string& firstName, const string& lastName, const string& email, const string& password,
                 const Address& address, const string& notes, bool gdprDeleted)
-                    : id(id), firstName(firstName), lastName(lastName), email(email),
+                    : id(id), firstName(firstName), lastName(lastName), email(email), password(password),
                     address(address), notes(notes), gdprDeleted(gdprDeleted) {}
 
 //Get
@@ -20,6 +20,9 @@ string Customer::getLastName() const {
 }
 string Customer::getEmail() const {
     return email;
+}
+string Customer::getPassword() const {
+    return password;
 }
 Customer::Address Customer::getAddress() const {
     return address;
@@ -41,6 +44,9 @@ void Customer::setLastName(const string& lastName) {
 }
 void Customer::setEmail(const string& email) {
     this->email = email;
+}
+void Customer::setPassword(const string& password) {
+    this->password = password;
 }
 void Customer::setAddress(const Address& address) {
     this->address = address;

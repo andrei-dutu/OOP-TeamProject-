@@ -12,6 +12,7 @@ private:
     string firstName;
     string lastName;
     string email;
+    string password;
 
     struct Address {
         string country;
@@ -26,7 +27,7 @@ private:
     bool gdprDeleted;
 
 public:
-    Customer(int id, const string& firstName, const string& lastName, const string& email,
+    Customer(int id, const string& firstName, const string& lastName, const string& email, const string& password,
                 const Address& address, const string& notes = "", bool gdprDeleted = false);
 
     //Get
@@ -34,6 +35,7 @@ public:
     string getFirstName() const;
     string getLastName() const;
     string getEmail() const;
+    string getPassword() const;
     Address getAddress() const;
     string getNotes() const;
     bool isGdprDeleted() const;
@@ -42,6 +44,7 @@ public:
     void setFirstName(const string& firstName);
     void setLastName(const string& lastName);
     void setEmail(const string& email);
+    void setPassword(const string& password);
     void setAddress(const Address& address);
     void setNotes(const string& notes);
     void setGdprDeleted(bool gdprDeleted);
