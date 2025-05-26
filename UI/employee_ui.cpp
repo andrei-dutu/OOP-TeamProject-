@@ -1,14 +1,15 @@
 //
 // Created by Andrei Pop on 26.05.2025.
 //
-#include<iostream>
-#include "employee_ui.h"
+
+#include <iostream>
 #include <limits>
+#include "employee_ui.h"
 
 using namespace std;
 using namespace ui;
 
-EmployeeUI::EmployeeUI(controller::EmployeeController& controller, const string& employee_name)
+EmployeeUI::EmployeeUI(Controller::EmployeeController& controller, const string& employee_name)
     : controller(controller), employee_name(employee_name) {
     command_handlers["confirm"] = [this]() { confirm_order(); };
     command_handlers["edit"] = [this]() { edit_order(); };
@@ -121,7 +122,9 @@ void EmployeeUI::list_all_orders() {
     if (orders.empty()) {
         cout << "There are no orders in the system.\n";
     } else {
-        cout << orders;
+        for (const auto& order : orders) {
+            cout << order << '\n';
+        }
     }
 }
 
@@ -134,7 +137,9 @@ void EmployeeUI::list_by_status() {
     if (filtered.empty()) {
         cout << "No orders found with status '" << status << "'.\n";
     } else {
-        cout << filtered;
+        for (const auto& order : filtered) {
+            cout << order << '\n';
+        }
     }
 }
 
@@ -166,9 +171,3 @@ void EmployeeUI::show_total_sum() {
 
     cin.ignore(); // clear newline
 }
-
-// Output operators
-ostream& ui::operator<<(ostream& out, const domain::Order& order) {
-    out << "ID: " << order.get_id()
-        << " | Product: " << order.get_product()
-        <<

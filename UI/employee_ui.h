@@ -1,34 +1,34 @@
-#ifndef EMPLOYEECONTROLLER_H
-#define EMPLOYEECONTROLLER_H
+#ifndef EMPLOYEE_UI_H
+#define EMPLOYEE_UI_H
 
-#include "Repository/order_repository.h"
-#include "Domain/order.h"
-#include <vector>
+#include "../Controller/employee_controller.h"
 #include <string>
-#include <map>
+#include <unordered_map>
+#include <functional>
 
-namespace controller {
+namespace ui {
 
-    class EmployeeController {
+    class EmployeeUI {
     private:
-        repository::OrderRepository& order_repo;
+        Controller::EmployeeController& controller;
+        std::string employee_name;
+
+        std::unordered_map<std::string, std::function<void()>> command_handlers;
+
+        void print_commands() const;
+        void confirm_order();
+        void edit_order();
+        void complete_order();
+        void claim_order();
+        void list_all_orders();
+        void list_by_status();
+        void show_total_sum();
 
     public:
-        explicit EmployeeController(repository::OrderRepository& repo);
-
-        std::vector<domain::Order> get_all_orders() const;
-
-        std::vector<domain::Order> get_orders_by_status(const std::string& status) const;
-
-        double get_total_sum_by_month(int year, int month) const;
-        double get_total_sum_by_year(int year) const;
-
-        // Optional: group by
-        std::map<std::string, double> get_total_sum_by_product(int year) const;
-        std::map<std::string, double> get_total_sum_by_customer(int year) const;
-        std::map<std::string, double> get_total_sum_by_employee(int year) const;
+        EmployeeUI(Controller::EmployeeController& controller, const std::string& employee_name);
+        void run();
     };
 
-} // namespace controller
+} // namespace ui
 
-#endif // EMPLOYEECONTROLLER_H
+#endif // EMPLOYEE_UI_H
