@@ -12,18 +12,24 @@ namespace Domain {
 
     private:
 
-        std::string ID;
+        std::string id;
         std::string name;
-        int price;
+        double price;
         int stock;
 
     public:
 
-        Product(std::string& ID, std::string& name, int price, int stock) : ID(ID), name(name), price(price), stock(stock) {}
-        std::string getID;
-        std::string getName;
-        int getPrice();
-        int getStock();
+        Product(const std::string& id, const std::string& name, double price, int stock);
+
+        std::string getId() const { return id; }
+        std::string getName() const { return name; }
+        double getPrice() const { return price; }
+        int getStock() const { return stock; }
+
+        void setName(const std::string& name) { this->name = name; }
+        void setPrice(double price);
+        void setStock(int stock);
+
 
     };
 }
