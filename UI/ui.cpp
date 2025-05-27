@@ -4,6 +4,8 @@
 #include "ui.h"
 #include "../Domain/employee.h"
 #include "../Domain/customer.h"
+#include "customer_ui.h"
+
 namespace UI {
     LoginResult ui::login() {
         std::cout << "Login email: ";
