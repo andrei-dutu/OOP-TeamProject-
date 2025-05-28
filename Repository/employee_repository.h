@@ -15,6 +15,7 @@ private:
 public:
     EmployeeRepository();
 
+    vector<Employee> getAllEmployees() const;
     vector<Employee>& getEmployees();
     void addEmployee(const Employee& employee);
     bool updateEmployee(int id, const Employee& updatedEmployee);

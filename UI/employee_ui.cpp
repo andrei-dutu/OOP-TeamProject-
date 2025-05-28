@@ -7,7 +7,8 @@ namespace UI {
     using namespace std;
     using namespace Controller;
 
-    EmployeeUI::EmployeeUI(EmployeeController& controller) : controller(controller) {}
+    EmployeeUI::EmployeeUI(EmployeeController& controller) : controller(controller), productController() {
+    }
 
     void EmployeeUI::show_main_menu() {
         cout << "\n=== Employee Menu ===\n";
@@ -16,6 +17,7 @@ namespace UI {
         cout << "3. Update Client\n";
         cout << "4. Delete Client\n";
         cout << "5. Anonymize Client (GDPR)\n";
+        cout << "6. Show all employees\n";
         cout << "0. Exit\n";
         cout << "Choose an option: ";
     }
@@ -34,6 +36,7 @@ namespace UI {
                     case 3: handle_update_client(); break;
                     case 4: handle_delete_client(); break;
                     case 5: handle_anonymize_client(); break;
+                    case 6: showAllEmployees(); break;
                     case 0: cout << "Exiting...\n"; break;
                     default: cout << "Invalid choice. Try again.\n"; break;
                 }
@@ -102,5 +105,33 @@ namespace UI {
         cout << "\nPress Enter to continue...";
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
+
+    void EmployeeUI::showAllEmployees() {
+        std::vector<Employee> employees = controller.getAllEmployees();
+        if (employees.empty()) {
+            std::cout << "No employees found.\n";
+        } else {
+            for (const auto& emp : employees) {
+                std::cout << emp.toString() << "\n"; // assuming toString() exists
+            }
+        }
+    }
+
+    void EmployeeUI::showAllProducts() {
+        const std::vector<Domain::Product>& products = productController.getAllProducts();
+
+        if (products.empty()) {
+            std::cout << "No products available.\n";
+        } else {
+            for (const auto& p : products) {
+                std::cout << "ID: " << p.getId()
+                          << ", Name: " << p.getName()
+                          << ", Price: " << p.getPrice()
+                          << ", Stock: " << p.getStock() << "\n";
+            }
+        }
+        pause();
+    }
+
 
 }

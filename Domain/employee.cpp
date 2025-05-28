@@ -55,3 +55,10 @@ void Employee::setBirthDate(const string& birthDate) {
 void Employee::setSalary(double salary) {
     this->salary = salary;
 }
+
+std::string Employee::toString() const {
+string name;
+    string role;
+
+    return "ID: " + std::to_string(id) + ", Name: " + name + ", Role: " + role;
+}
