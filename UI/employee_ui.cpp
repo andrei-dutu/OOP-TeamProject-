@@ -7,7 +7,7 @@ namespace UI {
     using namespace std;
     using namespace Controller;
 
-    EmployeeUI::EmployeeUI(EmployeeController& controller) : controller(controller), productController() {
+    EmployeeUI::EmployeeUI(EmployeeController& controller, ProductController& pc) : controller(controller), productController(pc) {
     }
 
     void EmployeeUI::show_main_menu() {

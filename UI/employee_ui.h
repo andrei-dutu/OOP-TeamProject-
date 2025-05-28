@@ -23,7 +23,7 @@ namespace UI {
 
     public:
 
-        explicit EmployeeUI(Controller::EmployeeController& controller);
+        explicit EmployeeUI(Controller::EmployeeController& controller, Controller::ProductController& pc);
         void showAllProducts();
         void showAllEmployees();
         void run();

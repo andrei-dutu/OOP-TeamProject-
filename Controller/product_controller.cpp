@@ -3,12 +3,11 @@
 //
 #include "../Controller/product_controller.h"
 #include <algorithm>
+#include "../Repository/product_repository.h"
 #include <cctype>
 #include "../Domain/product.h"
 namespace Controller {
-    ProductController::ProductController() {
-        initializeSampleData();
-    }
+
     bool ProductController::validateProductId(const std::string& id)  {
         if (id.empty()) return false;
 

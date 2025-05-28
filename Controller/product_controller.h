@@ -18,7 +18,9 @@ namespace Controller {
 
 
     public:
-        ProductController();
+        ProductController(Repository::ProductRepository& product_repository) : repository(product_repository) {
+            initializeSampleData();
+        }
         bool createProduct(const std::string& id, const std::string& name, double price, int stock);
 
         std::vector<Domain::Product> getAvailableProducts() const;
