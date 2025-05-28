@@ -6,7 +6,7 @@ using namespace std;
 CustomerUI::CustomerUI(CustomerRepository& cRepo, Repository::OrderRepository& oRepo)
     : customerRepository(cRepo), orderRepository(oRepo) {}
 
-void CustomerUI::changePassword(const string& customerEmail) {
+void CustomerUI::changePassword(const string& customerEmail) const {
     Customer* customer = customerRepository.findByEmail(customerEmail);
     if (!customer) {
         cout << "Customer not found.\n";
