@@ -19,17 +19,17 @@ namespace Domain {
 
     public:
 
-        Product(const std::string& id, const std::string& name, double price, int stock);
+        Product(std::string& ID, std::string& name, int price, int stock) : ID(ID), name(name), price(price), stock(stock) {}
 
-        std::string getId() const { return id; }
-        std::string getName() const { return name; }
-        double getPrice() const { return price; }
-        int getStock() const { return stock; }
+        std::string getID() const;
+        std::string getName() const;
+        int getPrice() const;
+        int getStock() const;
 
-        void setName(const std::string& name) { this->name = name; }
-        void setPrice(double price);
-        void setStock(int stock);
-
+        void setID(const std::string& newID);
+        void setName(const std::string& newName);
+        void setPrice(int newPrice);
+        void setStock(int newStock);
 
     };
 }

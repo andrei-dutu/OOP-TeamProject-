@@ -1,39 +1,55 @@
-//
-// Created by Andrei Pop on 02.05.2025.
-//
-
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 #include <string>
+#include <iostream>
+#pragma once
 
-namespace Domain {
+using namespace std;
 
-    class Customer {
+class Customer {
+private:
+    int id;
+    string firstName;
+    string lastName;
+    string email;
+    string password;
 
     struct Address {
-        std::string country;
-        std::string city;
-        std::string street;
-        std::string number;
+        string country;
+        string city;
+        string street;
+        int streetNumber;
     };
-    private:
+    Address address;
 
-        std::string surname;
-        std::string first_name;
-        std::string email;
-        Address address;
-        bool GDPR;
+    string notes;
 
-    public:
+    bool gdprDeleted;
 
-        Customer(std::string& surname, std::string& first_name, std::string& email, Address& address, bool GDPR) :
-        surname(surname), first_name(first_name), email(email), address(address), GDPR(GDPR) {}
-        std::string getSurname();
-        std::string getFirstName();
-        std::string getEmail();
-        Address getAddress();
-        bool getGDPR();
+public:
+    Customer(int id, const string& firstName, const string& lastName, const string& email, const string& password,
+                const Address& address, const string& notes = "", bool gdprDeleted = false);
 
-    };
-}
-#endif //CUSTOMER_H
+    //Get
+    int getId() const;
+    string getFirstName() const;
+    string getLastName() const;
+    string getEmail() const;
+    string getPassword() const;
+    Address getAddress() const;
+    string getNotes() const;
+    bool isGdprDeleted() const;
+
+    //Set
+    void setFirstName(const string& firstName);
+    void setLastName(const string& lastName);
+    void setEmail(const string& email);
+    void setPassword(const string& password);
+    void setAddress(const Address& address);
+    void setNotes(const string& notes);
+    void setGdprDeleted(bool gdprDeleted);
+
+    void anonymize();
+};
+
+#endif 
