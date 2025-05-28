@@ -6,14 +6,14 @@
 
 namespace Domain {
 
-    Product::Product(const std::string& id, const std::string& name, double price, int stock)
-            : id(id), name(name), price(price), stock(stock) {}
+    /*Product::Product(const std::string& id, const std::string& name, double price, int stock)
+            : id(id), name(name), price(price), stock(stock) {}*/
     void Product::setStock(int stock) {
         this->stock = stock;
     }
 
     std::string Product::getID() const {
-        return ID;
+        return id;
     }
 
 
@@ -30,7 +30,7 @@ namespace Domain {
     }
 
     void Product::setID(const std::string& newID) {
-        ID = newID;
+        id = newID;
     }
 
     void Product::setName(const std::string& newName) {

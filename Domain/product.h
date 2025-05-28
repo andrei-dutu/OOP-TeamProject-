@@ -19,7 +19,7 @@ namespace Domain {
 
     public:
 
-        Product(std::string& ID, std::string& name, int price, int stock) : ID(ID), name(name), price(price), stock(stock) {}
+        Product(std::string& ID, std::string& name, int price, int stock) : id(ID), name(name), price(price), stock(stock) {}
 
         std::string getID() const;
         std::string getName() const;
