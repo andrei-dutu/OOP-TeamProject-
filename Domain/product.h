@@ -12,9 +12,9 @@ namespace Domain {
 
     private:
 
-        std::string ID;
+        std::string id;
         std::string name;
-        int price;
+        double price;
         int stock;
 
     public:

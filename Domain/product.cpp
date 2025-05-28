@@ -2,11 +2,20 @@
 // Created by Andrei Pop on 02.05.2025.
 //
 #include "product.h"
+#include <string>
 
 namespace Domain {
+
+    Product::Product(const std::string& id, const std::string& name, double price, int stock)
+            : id(id), name(name), price(price), stock(stock) {}
+    void Product::setStock(int stock) {
+        this->stock = stock;
+    }
+
     std::string Product::getID() const {
         return ID;
     }
+
 
     std::string Product::getName() const {
         return name;
