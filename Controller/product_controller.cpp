@@ -4,11 +4,12 @@
 #include "../Controller/product_controller.h"
 #include <algorithm>
 #include <cctype>
+#include "../Domain/product.h"
 namespace Controller {
     ProductController::ProductController() {
         initializeSampleData();
     }
-    bool ProductController::validateProductId(const std::string& id) const {
+    bool ProductController::validateProductId(const std::string& id)  {
         if (id.empty()) return false;
 
         if (!std::all_of(id.begin(), id.end(), [](char c) {

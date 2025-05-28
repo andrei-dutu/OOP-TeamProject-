@@ -13,7 +13,7 @@ namespace Controller {
     private:
         Repository::ProductRepository repository;
 
-        bool validateProductId(const std::string& id) const;
+        bool validateProductId(const std::string& id);
         bool validateProductData(const std::string& name, double price, int stock) const;
 
 
