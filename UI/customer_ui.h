@@ -13,17 +13,18 @@ using namespace std;
 
 class CustomerUI {
 private:
-      Controller::CustomerController& customerController;
-      Controller::OrderController& orderController;
+    Controller::CustomerController& customerController;
+    Controller::OrderController& orderController;
+    string customerEmail;
 
-      void changePassword(const string& customerEmail) const;
-      //void makeReservation(const string& customerEmail);
-      void listOrders(const string& customerEmail) const;
+    void changePassword() const;
+    //void makeReservation();
+    void listOrders() const;
 
 public:
-      CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl);
+    CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl, const string& email);
 
-      void showMenu(const string& customerEmail);
+    void run();
 };
 
 #endif

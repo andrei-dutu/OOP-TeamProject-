@@ -46,7 +46,7 @@ Customer* CustomerRepository::findByEmail(const string& email) {
             return &customers[i];
         }
     }
-    return nullptr; //nu s-a gasit clientul
+    return nullptr;
 }
 
 int CustomerRepository::getCustomerCount() const

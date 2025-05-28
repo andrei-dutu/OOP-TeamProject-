@@ -21,6 +21,7 @@ namespace UI {
         Controller::EmployeeController& employee_controller;
         Controller::CustomerController& customer_controller;
         Controller::OrderController& order_controller;
+        std::string email;
     public:
         ui(Controller::EmployeeController& ec, Controller::CustomerController& cs, Controller::OrderController& oc)
             : employee_controller(ec), customer_controller(cs), order_controller(oc){}

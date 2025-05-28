@@ -46,7 +46,7 @@ Employee* EmployeeRepository::findByEmail(const string& email) {
             return &employees[i];
         }
     }
-    return nullptr; // employee not found
+    return nullptr;
 }
 
 int EmployeeRepository::getEmployeeCount() const {

@@ -15,7 +15,7 @@ int main() {
     Controller::OrderController order_controller(order_repo);
     Controller::EmployeeController employee_controller(employee_repo);
     Controller::CustomerController customer_controller(customer_repo);
-    UI::ui ui(employee_controller, customer_controller);
+    UI::ui ui(employee_controller, customer_controller, order_controller);
     ui.run();
     return 0;
 }

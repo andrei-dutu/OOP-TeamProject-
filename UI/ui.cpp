@@ -12,7 +12,7 @@ namespace UI {
         std::cout << "Login email: ";
         std::string email;
         std::cin >> email;
-
+        this->email = email;
         std::cout << "Password: ";
         std::string password;
         std::cin >> password;
@@ -41,8 +41,8 @@ namespace UI {
 
             if (result.type == UserType::Customer) {
                 Customer* customer = static_cast<Customer*>(result.user);
-                CustomerUI customer_ui(customer_controller, order_controller);
-                customer_ui.showMenu();
+                CustomerUI customer_ui(customer_controller, order_controller, email);
+                customer_ui.run();
                 // Call customer menu
             } else if (result.type == UserType::Employee) {
                 Employee* employee = static_cast<Employee*>(result.user);

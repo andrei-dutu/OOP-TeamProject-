@@ -3,10 +3,10 @@
 
 using namespace std;
 
-CustomerUI::CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl)
-    : customerController(cCtrl), orderController(oCtrl) {}
+CustomerUI::CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl, const string& email)
+    : customerController(cCtrl), orderController(oCtrl), customerEmail(email) {}
 
-void CustomerUI::changePassword(const string& customerEmail) const {
+void CustomerUI::changePassword() const {
     Customer* customer = customerController.findByEmail(customerEmail);
     if (!customer) {
         cout << "Customer not found.\n";
@@ -27,7 +27,7 @@ void CustomerUI::changePassword(const string& customerEmail) const {
     }
 }
 
-void CustomerUI::listOrders(const string& customerEmail) const {
+void CustomerUI::listOrders() const {
     try {
         vector<Domain::Order> orders = orderController.findOrdersByCustomer(customerEmail);
         cout << "Your Orders:\n";
@@ -44,31 +44,11 @@ void CustomerUI::listOrders(const string& customerEmail) const {
     }
 }
 
-// void CustomerUI::makeReservation(const string& customerEmail) {
-//     // Exemplu simplu de rezervare
-//     string productId;
-//     int quantity;
-//
-//     cout << "Enter product ID: ";
-//     getline(cin, productId);
-//
-//     cout << "Enter quantity: ";
-//     cin >> quantity;
-//     cin.ignore();
-//
-//     // Ca să faci comanda, trebuie să obții produsul din ProductRepository
-//     // Care ar trebui expus printr-un ProductController (ideal)
-//     // Pentru exemplu, presupunem că ai un ProductController disponibil (sau repo, dacă nu)
-//     // Altfel, poți adăuga ProductController în constructor și aici să-l folosești
-//
-//     // Pseudo cod:
-//     // Domain::Product product = productController.findProductById(productId);
-//     // dacă produsul există și cantitatea e ok -> creezi comanda și o adaugi prin orderController
-//
-//     cout << "[Implementare rezervare cu ProductController și OrderController]\n";
-// }
-
-void CustomerUI::showMenu(const string& customerEmail) {
+//void CustomerUI::makeReservation() {
+// Placeholder pentru logica de rezervare
+// cout << "[Reservation placeholder] Reservation created for customer " << customerEmail << ".\n";
+//}
+void CustomerUI::run() {
     int choice;
     do {
         cout << "\n===== Customer Menu =====\n";
@@ -82,13 +62,13 @@ void CustomerUI::showMenu(const string& customerEmail) {
 
         switch (choice) {
             case 1:
-                changePassword(customerEmail);
+                changePassword();
                 break;
             case 2:
-                //makeReservation(customerEmail);
+                //makeReservation();
                 break;
             case 3:
-                listOrders(customerEmail);
+                listOrders();
                 break;
             case 0:
                 cout << "Logging out...\n";

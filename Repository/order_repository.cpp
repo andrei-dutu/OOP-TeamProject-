@@ -7,9 +7,12 @@
 
 namespace Repository {
 
+
+
     void OrderRepository::addOrder(const Domain::Order& order) {
         order_storage.emplace_back(order);
     }
+
 
     std::vector<Domain::Order> OrderRepository::returnStorage() {
         return order_storage;
