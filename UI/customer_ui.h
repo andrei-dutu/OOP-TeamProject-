@@ -17,7 +17,7 @@ private:
       Controller::OrderController& orderController;
 
       void changePassword(const string& customerEmail) const;
-      void makeReservation(const string& customerEmail);
+      //void makeReservation(const string& customerEmail);
       void listOrders(const string& customerEmail) const;
 
 public:

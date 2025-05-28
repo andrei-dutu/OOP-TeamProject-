@@ -6,6 +6,7 @@
 #define UI_H
 #include "../Controller/customer_controller.h"
 #include "../Controller/employee_controller.h"
+#include "../Controller/order_controller.h"
 
 namespace UI {
     enum class UserType { None, Customer, Employee };
@@ -19,9 +20,10 @@ namespace UI {
     private:
         Controller::EmployeeController& employee_controller;
         Controller::CustomerController& customer_controller;
+        Controller::OrderController& order_controller;
     public:
-        ui(Controller::EmployeeController& ec, Controller::CustomerController& cs)
-            : employee_controller(ec), customer_controller(cs) {}
+        ui(Controller::EmployeeController& ec, Controller::CustomerController& cs, Controller::OrderController& oc)
+            : employee_controller(ec), customer_controller(cs), order_controller(oc){}
 
         LoginResult login();
         void run();

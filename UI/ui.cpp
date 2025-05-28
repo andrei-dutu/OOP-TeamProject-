@@ -41,7 +41,8 @@ namespace UI {
 
             if (result.type == UserType::Customer) {
                 Customer* customer = static_cast<Customer*>(result.user);
-                CustomerUI customer_ui(customer_controller);
+                CustomerUI customer_ui(customer_controller, order_controller);
+                customer_ui.showMenu();
                 // Call customer menu
             } else if (result.type == UserType::Employee) {
                 Employee* employee = static_cast<Employee*>(result.user);

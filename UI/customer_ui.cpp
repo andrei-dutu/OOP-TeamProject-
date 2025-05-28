@@ -17,7 +17,6 @@ void CustomerUI::changePassword(const string& customerEmail) const {
     cout << "Enter new password: ";
     getline(cin, newPassword);
 
-    // Presupunem că ai o metodă updateCustomer în CustomerController
     Customer updatedCustomer = *customer;
     updatedCustomer.setPassword(newPassword);
 
@@ -86,7 +85,7 @@ void CustomerUI::showMenu(const string& customerEmail) {
                 changePassword(customerEmail);
                 break;
             case 2:
-                makeReservation(customerEmail);
+                //makeReservation(customerEmail);
                 break;
             case 3:
                 listOrders(customerEmail);
