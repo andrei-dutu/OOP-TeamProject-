@@ -13,7 +13,7 @@ namespace Domain {
         return date;
     }
 
-    std::string Order::getStatus() {
+    std::string Order::getStatus() const{
         return status;
     }
 

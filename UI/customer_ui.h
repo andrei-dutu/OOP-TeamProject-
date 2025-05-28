@@ -15,7 +15,7 @@ private:
       /*Repository::*/CustomerRepository& customerRepository;
       Repository::OrderRepository& orderRepository;
 
-      void changePassword(const string& customerEmail);
+      void changePassword(const string& customerEmail) const;
       void makeReservation(const string& customerEmail);
       void listOrders(const string& customerEmail);
 
