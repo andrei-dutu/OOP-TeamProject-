@@ -52,3 +52,8 @@ Employee* EmployeeRepository::findByEmail(const string& email) {
 int EmployeeRepository::getEmployeeCount() const {
     return employees.size();
 }
+
+vector<Employee> EmployeeRepository::getAllEmployees() const {
+    return employees;  // assuming 'employees' is your internal list
+}
+

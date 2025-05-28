@@ -30,6 +30,7 @@ public:
     string getPosition() const;
     string getBirthDate() const;
     double getSalary() const;
+    string toString() const;
 
     // Setters
     void setFirstName(const string& firstName);

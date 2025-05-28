@@ -10,6 +10,7 @@ namespace Controller {
     public:
         EmployeeController(EmployeeRepository& repo);
 
+        vector<Employee> getAllEmployees() const;
         vector<Employee>& getAllEmployees();
         void addEmployee(const Employee& employee);
         bool updateEmployee(int id, const Employee& updatedEmployee);

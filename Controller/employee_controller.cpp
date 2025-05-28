@@ -36,4 +36,8 @@ Employee* EmployeeController::findByEmail(const string& email) {
     return found;
 }
 
+    vector<Employee> EmployeeController::getAllEmployees() const {
+    return repository.getAllEmployees();
+}
+
 }
