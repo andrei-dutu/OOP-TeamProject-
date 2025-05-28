@@ -2,21 +2,21 @@
 #define EMPLOYEE_CONTROLLER_H
 
 #include "../Repository/employee_repository.h"
-namespace Controller{
+namespace Controller {
     class EmployeeController {
+    private:
+        EmployeeRepository& repository;
 
-private:
-    EmployeeRepository& repository;
+    public:
+        EmployeeController(EmployeeRepository& repo);
 
-public:
-    EmployeeController(EmployeeRepository& repo);
+        vector<Employee>& getAllEmployees();
+        void addEmployee(const Employee& employee);
+        bool updateEmployee(int id, const Employee& updatedEmployee);
+        bool deleteEmployee(int id);
+        Employee* findByEmail(const string& email);
 
-    vector<Employee>& getAllEmployees();
-    void addEmployee(const Employee& employee);
-    bool updateEmployee(int id, const Employee& updatedEmployee);
-    bool deleteEmployee(int id);
-    Employee* findByEmail(const string& email);
-};
+    };
 }
 
 

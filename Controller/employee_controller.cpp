@@ -35,4 +35,5 @@ Employee* EmployeeController::findByEmail(const string& email) {
     }
     return found;
 }
+
 }
