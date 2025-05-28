@@ -1,26 +1,27 @@
 #ifndef CUSTOMER_UI_H
 #define CUSTOMER_UI_H
 
+#include "../Controller/customer_controller.h"
+#include "../Controller/order_controller.h"
 #include "../Domain/customer.h"
-#include "../Repository/customer_repository.h"
-#include "../Repository/order_repository.h"
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class CustomerUI {
 private:
-      /*Repository::*/CustomerRepository& customerRepository;
-      Repository::OrderRepository& orderRepository;
+      Controller::CustomerController& customerController;
+      Controller::OrderController& orderController;
 
       void changePassword(const string& customerEmail) const;
       void makeReservation(const string& customerEmail);
-      void listOrders(const string& customerEmail);
+      void listOrders(const string& customerEmail) const;
 
 public:
-      CustomerUI(/*Repository::*/CustomerRepository& cRepo, Repository::OrderRepository& oRepo);
+      CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl);
 
       void showMenu(const string& customerEmail);
 };
