@@ -14,18 +14,13 @@ namespace UI {
         void handle_create_client();
         void handle_update_client();
         void handle_delete_client();
-
-
-        // bool add_employee(const string & surname, const string & first_name, const string & email, const string & position,
-        //                   const Date & birthdate, int salary);
+        void handle_anonymize_client();
+        void pause();
 
     public:
         explicit EmployeeUI(Controller::EmployeeController& controller);
         void run();
     };
-
-
-
 }
 
 #endif // EMPLOYEE_UI_H

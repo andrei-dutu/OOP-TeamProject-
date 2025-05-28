@@ -1,7 +1,7 @@
 #include "employee_ui.h"
-#include "../Controller/employee_controller.h"
 #include <iostream>
 #include <limits>
+#include <sstream>
 
 namespace UI {
     using namespace std;
@@ -33,10 +33,11 @@ namespace UI {
                     case 2: handle_create_client(); break;
                     case 3: handle_update_client(); break;
                     case 4: handle_delete_client(); break;
+                    case 5: handle_anonymize_client(); break;
                     case 0: cout << "Exiting...\n"; break;
                     default: cout << "Invalid choice. Try again.\n"; break;
                 }
-            } catch (const std::exception& ex) {
+            } catch (const exception& ex) {
                 cout << "Error: " << ex.what() << "\n";
             }
 
@@ -44,55 +45,62 @@ namespace UI {
     }
 
     void EmployeeUI::handle_add_employee() {
-        string surname, first_name, email, position;
-        int day, month, year, salary;
+        string lastName, firstName, email, password, position;
+        int day, month, year;
+        double salary;
 
-        cout << "Surname: "; getline(cin, surname);
-        cout << "First Name: "; getline(cin, first_name);
+        cout << "Last Name: "; getline(cin, lastName);
+        cout << "First Name: "; getline(cin, firstName);
         cout << "Email: "; getline(cin, email);
+        cout << "Password: "; getline(cin, password);
         cout << "Position: "; getline(cin, position);
         cout << "Birthdate (DD MM YYYY): "; cin >> day >> month >> year;
         cout << "Salary (EUR): "; cin >> salary;
         cin.ignore();
 
-        // Date birthdate{day, month, year};
+        stringstream birthDateStream;
+        birthDateStream << (day < 10 ? "0" : "") << day << "."
+                        << (month < 10 ? "0" : "") << month << "."
+                        << year;
 
+        string birthDate = birthDateStream.str();
 
-        void EmployeeUI::handle_create_client() ;
-        {
-            size_t id;
-            string name, vorname, email, handy, adresse, bemerkungen;
+        int id = controller.getAllEmployees().size() + 1; // simplistic ID generation
+        Employee newEmployee(id, firstName, lastName, email, password, position, birthDate, salary);
 
-            cout << "Client ID: "; cin >> id; cin.ignore();
-            cout << "Last Name: "; getline(cin, name);
-            cout << "First Name: "; getline(cin, vorname);
-            cout << "Email: "; getline(cin, email);
-            cout << "Phone: "; getline(cin, handy);
-            cout << "Address: "; getline(cin, adresse);
-            cout << "Remarks: "; getline(cin, bemerkungen);
-
-
-            void EmployeeUI::handle_update_client() ;{
-                size_t id;
-                string name, vorname, email, handy, adresse, bemerkungen;
-
-                cout << "Client ID to update: "; cin >> id; cin.ignore();
-                cout << "Last Name: "; getline(cin, name);
-                cout << "First Name: "; getline(cin, vorname);
-                cout << "Email: "; getline(cin, email);
-                cout << "Phone: "; getline(cin, handy);
-                cout << "Address: "; getline(cin, adresse);
-                cout << "Remarks: "; getline(cin, bemerkungen);
-
-                void EmployeeUI::handle_delete_client() ;{
-                    size_t id;
-                    cout << "Client ID to delete: "; cin >> id; cin.ignore();
-
-                    if (controller.deleteEmployee(id))
-                        cout << "Client deleted successfully.\n";
-                }
-
-            }
-        }
+        controller.addEmployee(newEmployee);
+        cout << "Employee added successfully.\n";
+        pause();
     }
+
+    void EmployeeUI::handle_create_client() {
+        cout << "[Create Client] Feature not implemented yet.\n";
+        pause();
+    }
+
+    void EmployeeUI::handle_update_client() {
+        cout << "[Update Client] Feature not implemented yet.\n";
+        pause();
+    }
+
+    void EmployeeUI::handle_delete_client() {
+        size_t id;
+        cout << "Client ID to delete: "; cin >> id;
+        cin.ignore();
+
+        if (controller.deleteEmployee(id))
+            cout << "Client deleted successfully.\n";
+        pause();
+    }
+
+    void EmployeeUI::handle_anonymize_client() {
+        cout << "[Anonymize Client] Feature not implemented yet.\n";
+        pause();
+    }
+
+    void EmployeeUI::pause() {
+        cout << "\nPress Enter to continue...";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
 }
