@@ -30,9 +30,9 @@ namespace Controller {
 
     Customer* CustomerController::findByEmail(const string& email) {
         Customer* found = repository.findByEmail(email);
-        if (!found) {
+        /*if (!found) {
             throw runtime_error("Customer with email '" + email + "' not found.");
-        }
+        }*/
         return found;
     }
 

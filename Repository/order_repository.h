@@ -33,6 +33,7 @@ namespace Repository {
         int getTotalAmountByYear(int year);
         int getTotalAmountByMonth(int year, int month);
 
+
     };
 }
 
