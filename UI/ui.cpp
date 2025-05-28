@@ -5,6 +5,7 @@
 #include "../Domain/employee.h"
 #include "../Domain/customer.h"
 #include "customer_ui.h"
+#include "employee_ui.h"
 
 namespace UI {
     LoginResult ui::login() {
@@ -43,6 +44,8 @@ namespace UI {
                 // Call customer menu
             } else if (result.type == UserType::Employee) {
                 Employee* employee = static_cast<Employee*>(result.user);
+                EmployeeUI employee_ui(employee_controller);
+                employee_ui.run();
                 // Call employee menu
             }
         }
