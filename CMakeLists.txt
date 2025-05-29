@@ -13,7 +13,7 @@ add_executable(App main.cpp Controller/customer_controller.cpp Controller/custom
         Repository/employee_repository.cpp Repository/employee_repository.h Repository/product_repository.cpp
         Repository/product_repository.h Repository/order_repository.cpp Repository/order_repository.h UI/ui.cpp
         UI/ui.h UI/employee_ui.cpp UI/employee_ui.h UI/customer_ui.cpp UI/customer_ui.h Domain Repository UI Controller
-        )
+        Tests/test.cpp Tests/test.h)
 
 add_executable(Test test.cpp)
 

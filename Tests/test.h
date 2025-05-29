@@ -16,6 +16,7 @@ private:
     Controller::ProductController &pc;
 public:
     Test(Controller::CustomerController cc, Controller::EmployeeController &ec, Controller::OrderController &oc, Controller::ProductController &pc) :
-    cc(cc), ec(ec), oc(oc), pc(pc){};
+    cc(cc), ec(ec), oc(oc), pc(pc){}
+
 };
 #endif //TEST_H
