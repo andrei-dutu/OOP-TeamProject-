@@ -40,12 +40,12 @@ namespace UI {
             } while (result.type == UserType::None);
 
             if (result.type == UserType::Customer) {
-                Customer* customer = static_cast<Customer*>(result.user);
+                //Customer* customer = static_cast<Customer*>(result.user);
                 CustomerUI customer_ui(customer_controller, order_controller, email);
                 customer_ui.run();
                 // Call customer menu
             } else if (result.type == UserType::Employee) {
-                Employee* employee = static_cast<Employee*>(result.user);
+                //Employee* employee = static_cast<Employee*>(result.user);
                 EmployeeUI employee_ui(employee_controller, product_controller);
                 employee_ui.run();
                 // Call employee menu
