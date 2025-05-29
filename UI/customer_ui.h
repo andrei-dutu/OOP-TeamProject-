@@ -16,15 +16,13 @@ class CustomerUI {
 private:
     Controller::CustomerController& customerController;
     Controller::OrderController& orderController;
-    Controller::ProductController& productController;
     string customerEmail;
 
     void changePassword() const;
-    void makeReservation();
     void listOrders() const;
 
 public:
-    CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl, Controller::ProductController& pCtrl, const string& email);
+    CustomerUI(Controller::CustomerController& cCtrl, Controller::OrderController& oCtrl,  const string& email);
 
     void run();
 };
