@@ -17,7 +17,9 @@ namespace Controller {
 
     public:
 
+
         OrderController(Repository::OrderRepository& order_repo) : order_repo(order_repo){}
+        std::vector<Domain::Order> ReturnStorage();
         void addOrder(const Domain::Order& order) const;
         Domain::Order searchOrder(int id) const;
         std::vector<Domain::Order> findOrdersByEmployee(const std::string& email) const;

@@ -8,6 +8,10 @@ namespace Controller {
     void OrderController::addOrder(const Domain::Order& order) const {
         order_repo.addOrder(order);
     }
+    std::vector<Domain::Order> OrderController::ReturnStorage() {
+        return order_repo.returnStorage();;
+    }
+
 
     Domain::Order OrderController:: searchOrder (const int id) const {
         return order_repo.searchOrder(id);
